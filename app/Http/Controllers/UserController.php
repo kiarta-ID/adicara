@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Http\Requests\StoreEventRequest;
-use App\Http\Requests\UpdateEventRequest;
-use App\Http\Resources\EventCollection;
-use App\Http\Resources\EventResource;
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
+use App\Models\User;
+use Illuminate\Http\Request;
 
-class EventController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return new EventCollection(Event::with('user')->get());
+        return new UserCollection(User::all());
     }
 
     /**
@@ -33,10 +32,10 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreEventRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEventRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -44,21 +43,21 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(User $user)
     {
-        return new EventResource($event->with('user')->findOrFail($event->id));
+        return new UserResource($user->with('events')->findOrFail($user->id));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(User $user)
     {
         //
     }
@@ -66,11 +65,11 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateEventRequest  $request
-     * @param  \App\Models\Event  $event
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -78,10 +77,10 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy(User $user)
     {
         //
     }

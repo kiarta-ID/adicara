@@ -1,13 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocumentController;
-use App\Http\Resources\EventCollection;
-use App\Http\Resources\EventResource;
-use App\Http\Resources\UserCollection;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\UserController;
 use App\Http\Resources\UserResource;
-use App\Models\Event;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,20 +24,13 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', function (Request $request) {
-        return new UserResource(Auth::user());
+        return new UserResource(Auth::user()->with('events')->findOrFail(Auth::user()->id));
     });
-    Route::get('/user', function (Request $request) {
-        return new UserCollection(User::all());
-    });
-    Route::get('/user/{user}', function (Request $request, User $user) {
-        return new UserResource($user);
-    });
-    Route::get('/event', function (Request $request) {
-        return new EventCollection(Event::all());
-    });
-    Route::get('/event/{event}', function (Request $request, Event $event) {
-        return new EventResource($event);
-    });
+
+    Route::resource('user', UserController::class);
+
+    Route::resource('event', EventController    ::class);
+    
     // Route::get('/documents', function (Request $request) {
     //     return new DocumentCollection(Document::all());
     // });
