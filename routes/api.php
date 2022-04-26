@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::resource('user', UserController::class);
 
-    Route::resource('event', EventController    ::class);
+    Route::resource('event', EventController::class);
     
     // Route::get('/documents', function (Request $request) {
     //     return new DocumentCollection(Document::all());
