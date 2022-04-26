@@ -84,4 +84,9 @@ class UserController extends Controller
     {
         //
     }
+
+    public function profile()
+    {
+        return User::with('events')->findOrFail(auth()->user()->id);
+    }
 }
