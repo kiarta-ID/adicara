@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -36,16 +35,11 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        if (Auth::check()) {
-            Auth::user()->tokens()->delete();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-            auth()->logout();
-            return response()->json(['message' => 'Successfully logged out']);
-        }
-        else {
-            return response()->json(['message' => 'Unauthenticated'], 401);
-        }
+        auth()->user()->tokens()->delete();
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+        // auth()->logout();
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     public function register(Request $request)
