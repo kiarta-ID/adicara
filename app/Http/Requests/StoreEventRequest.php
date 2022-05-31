@@ -13,7 +13,7 @@ class StoreEventRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreEventRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama_event' => 'required|string',
+            'deskripsi_event' => 'required|string',
+            'slug' => 'required|string|unique:events',
         ];
     }
 }

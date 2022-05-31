@@ -13,7 +13,7 @@ class UpdateEventRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user()->id == $this->event->user_id;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateEventRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 'nama_event' => 'required|string',
+            'deskripsi_event' => 'required|string',
+            // 'slug' => 'required|string|unique:events,slug,' . $this->event->id,
         ];
     }
 }
