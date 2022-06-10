@@ -78,7 +78,7 @@ class EventController extends Controller
      */
     public function update(UpdateEventRequest $request, Event $event)
     {
-        $event->fill($request->only(['deskripsi_event']));
+        $event->fill($request->only(['nama_event','deskripsi_event']));
         $event->save();
         return ["message" => "Event berhasil diubah!"];
     }
