@@ -27,6 +27,8 @@ class StoreEventRequest extends FormRequest
             'nama_event' => 'required|string',
             'deskripsi_event' => 'required|string',
             'slug' => 'required|string|unique:events',
+            'alamat' => 'nullable|string',
+            'social_media' => 'nullable|string',
         ];
     }
 }

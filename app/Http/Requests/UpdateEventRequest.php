@@ -26,7 +26,8 @@ class UpdateEventRequest extends FormRequest
         return [
             'nama_event' => 'required|string',
             'deskripsi_event' => 'required|string',
-            // 'slug' => 'required|string|unique:events,slug,' . $this->event->id,
+            'alamat' => 'nullable|string',
+            'social_media' => 'nullable|string',
         ];
     }
 }

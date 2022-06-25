@@ -18,6 +18,8 @@ class CreateEventsTable extends Migration
             $table->string('nama_event');
             $table->text('deskripsi_event');
             $table->string('slug')->unique();
+            $table->string('alamat')->nullable();
+            $table->string('social_media')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

@@ -18,6 +18,8 @@ class Event extends Model
         'nama_event',
         'deskripsi_event',
         'slug',
+        'alamat',
+        'social_media',
         'user_id',
     ];
 
