@@ -55,6 +55,7 @@ class EventPositionUserController extends Controller
                 "message" => "User sudah berada dalam tim!"
             ];
         }
+        $position_user = new PositionUser();
         $position_user->user_id = $user->id;
         $position_user->position_id = $position->id;
         $position_user->save();

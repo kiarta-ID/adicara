@@ -19,6 +19,8 @@ class EventResource extends JsonResource
             'deskripsi_event' => $this->deskripsi_event,
             'slug' => $this->slug,
             'user' => $this->whenLoaded('user'),
+            'alamat' => $this->alamat,
+            'social_media' => $this->social_media
             // 'events' => EventResource::collection($this->events),
             // 'created_at' => $this->created_at,
             // 'updated_at' => $this->updated_at,
