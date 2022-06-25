@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventPositionUserController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\UserController;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
@@ -34,6 +36,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('user', UserController::class);
 
     Route::resource('event', EventController::class);
+
+    Route::resource('event.position', PositionController::class);
+
+    Route::resource('event.position.user', EventPositionUserController::class);
+    
     // Route::get('/documents', function (Request $request) {
     //     return new DocumentCollection(Document::all());
     // });

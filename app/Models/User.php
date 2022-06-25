@@ -50,6 +50,6 @@ class User extends Authenticatable
 
     public function positions()
     {
-        return $this->belongsToMany(Position::class, 'user_position', 'user_id', 'position_id');
+        return $this->belongsToMany(Position::class, 'position_user');
     }
 }

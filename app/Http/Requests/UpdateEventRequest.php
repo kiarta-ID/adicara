@@ -24,7 +24,7 @@ class UpdateEventRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'nama_event' => 'required|string',
+            'nama_event' => 'required|string',
             'deskripsi_event' => 'required|string',
             // 'slug' => 'required|string|unique:events,slug,' . $this->event->id,
         ];

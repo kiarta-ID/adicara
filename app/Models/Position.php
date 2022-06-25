@@ -20,13 +20,13 @@ class Position extends Model
         'event_id',
     ];
 
-    public function events()
+    public function event()
     {
         return $this->belongsTo(Event::class);
     }
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_position', 'position_id', 'user_id');
+        return $this->belongsToMany(User::class, 'position_user',);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserPositionTable extends Migration
+class CreatePositionUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserPositionTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_position', function (Blueprint $table) {
+        Schema::create('position_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('position_id')->constrained('positions')->onDelete('cascade')->onUpdate('cascade');

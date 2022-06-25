@@ -13,7 +13,7 @@ class UpdatePositionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user()->id == $this->event->user_id;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdatePositionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama_jabatan' => 'required|string',
+            'jumlah_maksimum' => 'required|numeric|min:1',
         ];
     }
 }
